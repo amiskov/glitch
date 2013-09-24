@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+        var vk = {
+            data: {},
+            api: "//vk.com/js/api/openapi.js",
+            appID: '3889434',
+            appPermissions: '6',
+            init: function () {
+                $.getScript(vk.api, function () {
+                });
+                window.vkAsyncInit = function () {
+                    VK.init({apiId: vk.appID});
+                    load();
+                };
+
+                function load() {
+                    VK.Auth.login(authInfo, vk.appPermissions);
+
+                    function authInfo(response) {
+                        if (response.session) { // Авторизация успешна
+                            vk.data.user = response.session.user;
+                            vk.getFriendsPhotos();
+                        } else {
+                            alert("Авторизоваться не удалось!");
+                        }
+                    }
+                }
+            },
+            getFriendsPhotos: function () {
+                VK.Api.call('friends.get', {fields: ['photo_big'], order: 'random'}, function (r) {
+                    if (r.response) {
+                        r = r.response;
+                        var ol = $('#clientApi').add('ol');
+                        for (var i = 0; i < 5; ++i) {
+                            console.log(r[i].photo_big);
+                            var $img = $('<img/>', {
+                                'src': 'http://hitode909.appspot.com/glitch/api2' + '?uri=' + r[i].photo_big
+                            });
+                            $('#clientApi').append($img);
+                        }
+                    } else alert("Не удалось получить список ваших друзей");
+                })
+            }
+        };
+
+        $(document).ready(function () {
+            vk.init();
+        });
+    </script>
+</head>
+<body>
+<div id="clientApi"></div>
+</body>
+</html>

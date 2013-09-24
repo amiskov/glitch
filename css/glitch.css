@@ -1,0 +1,82 @@
+html,
+body {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+body {
+    /*background: #EEE url(../img/bg.png) center center;*/
+    text-align: center;
+    font-family: "Courier New", Courier, monospace;
+    text-transform: uppercase;
+}
+
+#images {
+    min-height: 100%;
+    background: #EEE url(../img/bg_animated.gif) center center;
+}
+
+.nothing-to-show {
+    cursor: url('../img/muha.png'), pointer;
+}
+
+.nothing-to-show .button {
+    width: 400px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 24px;
+    top: 50%;
+    left: 50%;
+    margin: -15px 0 0 -200px;
+    box-shadow: 2px 2px #000;
+    border: 1px solid #FFF;
+    cursor: url('../img/muha.png'), pointer;
+}
+
+.button {
+    position: fixed;
+    padding: 10px;
+    background: #603815;
+    color: #EEE;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    text-decoration: none;
+    border-top-left-radius: 3px;
+}
+.button.processing {
+    cursor: url('../img/cursor.cur'), pointer;
+}
+.button:hover {
+    color: #FFF;
+    background: #A06741;
+}
+.image {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 20px;
+    box-shadow: 3px 3px 50px #000;
+    z-index: -1;
+}
+.image canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    -webkit-transition: all 1s;
+}
+.image:hover canvas {
+    opacity: 0;
+    -webkit-transform: scale(1.1);
+}
+
+
+/*.mosaicflow__column {*/
+    /*float:left;*/
+    /*}*/
+/*.mosaicflow__item img {*/
+    /*display:block;*/
+    /*width:100%;*/
+    /*height:auto;*/
+/*}*/
