@@ -18,7 +18,7 @@
 <?php
 $client_id = '3889434'; // ID приложения
 $client_secret = 'ZlTeZO8GXlzsoPHYraVU'; // Защищённый ключ
-$redirect_uri = 'http://glitch.loc/index.php'; // Адрес сайта
+$redirect_uri = 'http://dev.miskov.ru/glitch/'; // Адрес сайта
 
 $url = 'http://oauth.vk.com/authorize';
 $params = array(
